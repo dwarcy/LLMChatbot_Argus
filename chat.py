@@ -64,38 +64,6 @@ st.markdown("""
         padding-top: 180px; 
     }
     
-    /* 1. FUNDO PADRÃO (Light Mode) */
-    [data-testid="stAppViewContainer"] {
-        background-image: url("https://images.unsplash.com/photo-1615715410008-3883e21f8c7c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-        background-size: cover;
-        background-position: center;
-        transition: background-image 0.5s ease-in-out; /* Transição suave na troca */
-    }
-
-    /* 2. MUDANÇA PARA DARK MODE */
-    @media (prefers-color-scheme: dark) {
-        [data-testid="stAppViewContainer"] {
-            background-image: url("https://images.unsplash.com/photo-1708549566274-638eb2d2108b?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-        }
-
-        /* Ajuste das bolhas para o fundo escuro */
-        [data-testid="stChatMessage"] {
-            background-color: rgba(0, 0, 0, 0.5) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-
-        [data-testid="stChatMessage"] p {
-            color: #FFFFFF !important;
-        }
-
-        .fixed-header {
-            background-color: rgba(15, 15, 15, 0.8) !important;
-        }
-        
-        .fixed-header h1, .fixed-header p {
-            color: #FFFFFF !important;
-        }
-    }
 </style>
 
 <div class="fixed-header">
