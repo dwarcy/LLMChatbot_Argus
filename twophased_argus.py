@@ -69,8 +69,8 @@ def retrieve(query, top_k_macro=10, final_k=5):
 # 3. CARREGAMENTO DO LLM E GERAÇÃO
 # ==========================================
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-# model_name = "Qwen/Qwen2.5-0.5B-Instruct"
-model_name = "Qwen/Qwen2.5-1.5B-Instruct"
+model_name = "Qwen/Qwen2.5-0.5B-Instruct"
+# model_name = "Qwen/Qwen2.5-1.5B-Instruct"
 
 print(f"\n[3] Carregando modelo LLM '{model_name}' na {device}...")
 tokenizer = AutoTokenizer.from_pretrained(model_name)
