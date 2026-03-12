@@ -75,9 +75,7 @@ st.markdown("""
     /* 2. MUDANÇA PARA DARK MODE */
     @media (prefers-color-scheme: dark) {
         [data-testid="stAppViewContainer"] {
-            /* Aqui você coloca uma imagem mais escura, como um templo à noite ou céu estrelado */
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                            url("https://images.unsplash.com/photo-1516410529446-2c777cb7366d?q=80&w=2000&auto=format&fit=crop"); 
+            background-image: url("https://images.unsplash.com/photo-1708549566274-638eb2d2108b?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         }
 
         /* Ajuste das bolhas para o fundo escuro */
