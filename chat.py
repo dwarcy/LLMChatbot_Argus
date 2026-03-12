@@ -4,63 +4,105 @@ from twophased_argus import rag_answer
 
 st.markdown("""
 <style>
-    /* 1. FUNDO DO APP */
+    /* 1. RESET DE FUNDO E CABEÇALHO */
+    [data-testid="stHeader"] {
+        background-color: rgba(0, 0, 0, 0); 
+    }
+
     [data-testid="stAppViewContainer"] {
         background-image: url("https://images.unsplash.com/photo-1615715410008-3883e21f8c7c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
     }
 
-    /* 2. CABEÇALHO (Argus e texto de apoio) */
-    .fixed-header h1 {
-        rgba(255, 255, 255, 0.6) !important;
-    }
-    .fixed-header p {
-        color: #444444 !important;
-    }
-
-    /* 3. MENSAGENS DO CHAT (Fundo e Texto) */
-    /* Isso remove o fundo escuro das mensagens e coloca texto preto */
+    /* 2. EFEITO VIDRO NAS MENSAGENS (Blur + Transparência) */
     [data-testid="stChatMessage"] {
-        rgba(255, 255, 255, 0.6) !important; /* Branco translúcido */
-        border-radius: 15px;
-    }
-    
-    [data-testid="stChatMessage"] p {
-        rgba(255, 255, 255, 0.6) !important; /* Texto preto */
+        background-color: rgba(255, 255, 255, 0.2) !important; 
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 15px !important;
+        margin-bottom: 10px !important;
     }
 
-    /* 4. INPUT DE TEXTO (Barra de baixo) */
-    /* Força o fundo branco e texto preto na caixa de digitação */
+    /* Força cor preta em todos os textos de chat */
+    [data-testid="stChatMessage"] p, [data-testid="stChatMessage"] div {
+        color: #000000 !important;
+    }
+
+    /* 3. CAIXA DE INPUT (Fundo Branco e Texto Preto) */
     [data-testid="stChatInput"] textarea {
-        rgba(255, 255, 255, 0.6) !important;
-        color: #1E1E1E !important;
-        -webkit-text-fill-color: #1E1E1E !important;
+        background-color: rgba(255, 255, 255, 0.8) !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+        caret-color: #000000 !important;
     }
 
-    /* Remove o gradiente preto que o Streamlit coloca no fundo do input */
     [data-testid="stChatInput"] {
         background-color: transparent !important;
     }
 
+    /* 4. CABEÇALHO FIXO */
     .fixed-header {
         position: fixed;
         top: 0; left: 0; width: 100%;
         background-color: rgba(255, 255, 255, 0.35); 
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         z-index: 1000; 
         padding: 3rem 1rem 0.6rem 5rem; 
         border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
     }
 
+    .fixed-header h1 {
+        color: #000000 !important;
+        margin-bottom: 0;
+    }
+
     .block-container {
         padding-top: 180px; 
+    }
+    
+    /* 1. FUNDO PADRÃO (Light Mode) */
+    [data-testid="stAppViewContainer"] {
+        background-image: url("https://images.unsplash.com/photo-1615715410008-3883e21f8c7c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        background-position: center;
+        transition: background-image 0.5s ease-in-out; /* Transição suave na troca */
+    }
+
+    /* 2. MUDANÇA PARA DARK MODE */
+    @media (prefers-color-scheme: dark) {
+        [data-testid="stAppViewContainer"] {
+            /* Aqui você coloca uma imagem mais escura, como um templo à noite ou céu estrelado */
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                            url("https://images.unsplash.com/photo-1516410529446-2c777cb7366d?q=80&w=2000&auto=format&fit=crop"); 
+        }
+
+        /* Ajuste das bolhas para o fundo escuro */
+        [data-testid="stChatMessage"] {
+            background-color: rgba(0, 0, 0, 0.5) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        [data-testid="stChatMessage"] p {
+            color: #FFFFFF !important;
+        }
+
+        .fixed-header {
+            background-color: rgba(15, 15, 15, 0.8) !important;
+        }
+        
+        .fixed-header h1, .fixed-header p {
+            color: #FFFFFF !important;
+        }
     }
 </style>
 
 <div class="fixed-header">
-    <h1 style="margin-bottom: 0;">👁️ Argus</h1>
-    <p style="margin-top: 0;">Your all-seeing oracle. Ask me anything about Greek mythology, gods, and legends.</p>
+    <h1>👁️ Argus</h1>
+    <p style="color: #000000; font-size: 14px; margin-top: 0; opacity: 0.8;">Your all-seeing oracle. Ask me anything about Greek mythology, gods, and legends.</p>
 </div>
 """, unsafe_allow_html=True)
 
