@@ -4,31 +4,48 @@ from twophased_argus import rag_answer
 
 st.markdown("""
 <style>
-    [data-testid="stHeader"] {
-        background-color: rgba(0, 0, 0, 0); 
-    }
-    
-    .stBottom > div {
-        background-color: rgba(255, 255, 255, 0.3) !important; /* Quase transparente */
-        backdrop-filter: blur(10px) !important; /* Efeito de desfoque */
-        -webkit-backdrop-filter: blur(10px) !important; /* Para navegadores baseados em WebKit */
-        padding-bottom: 20px; /* Dá um respiro para a caixa não ficar colada no final da tela */
-    }
-
-    /* Fundo com Imagem */
+    /* 1. FUNDO DO APP */
     [data-testid="stAppViewContainer"] {
-        background-image: url("https://images.unsplash.com/photo-1615715410008-3883e21f8c7c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Troque o link aqui */
+        background-image: url("https://images.unsplash.com/photo-1615715410008-3883e21f8c7c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
     }
 
-    /* Atualização do Header para combinar com o fundo */
+    /* 2. CABEÇALHO (Argus e texto de apoio) */
+    .fixed-header h1 {
+        rgba(255, 255, 255, 0.6) !important;
+    }
+    .fixed-header p {
+        color: #444444 !important;
+    }
+
+    /* 3. MENSAGENS DO CHAT (Fundo e Texto) */
+    /* Isso remove o fundo escuro das mensagens e coloca texto preto */
+    [data-testid="stChatMessage"] {
+        rgba(255, 255, 255, 0.6) !important; /* Branco translúcido */
+        border-radius: 15px;
+    }
+    
+    [data-testid="stChatMessage"] p {
+        rgba(255, 255, 255, 0.6) !important; /* Texto preto */
+    }
+
+    /* 4. INPUT DE TEXTO (Barra de baixo) */
+    /* Força o fundo branco e texto preto na caixa de digitação */
+    [data-testid="stChatInput"] textarea {
+        rgba(255, 255, 255, 0.6) !important;
+        color: #1E1E1E !important;
+        -webkit-text-fill-color: #1E1E1E !important;
+    }
+
+    /* Remove o gradiente preto que o Streamlit coloca no fundo do input */
+    [data-testid="stChatInput"] {
+        background-color: transparent !important;
+    }
+
     .fixed-header {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
+        top: 0; left: 0; width: 100%;
         background-color: rgba(255, 255, 255, 0.35); 
         backdrop-filter: blur(10px);
         z-index: 1000; 
@@ -37,13 +54,13 @@ st.markdown("""
     }
 
     .block-container {
-        padding-top: 160px; 
+        padding-top: 180px; 
     }
 </style>
 
 <div class="fixed-header">
     <h1 style="margin-bottom: 0;">👁️ Argus</h1>
-    <p style="color: #555; font-size: 14px; margin-top: 0;">Your all-seeing oracle. Ask me anything about Greek mythology, gods, and legends.</p>
+    <p style="margin-top: 0;">Your all-seeing oracle. Ask me anything about Greek mythology, gods, and legends.</p>
 </div>
 """, unsafe_allow_html=True)
 
