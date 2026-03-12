@@ -9,18 +9,28 @@ st.markdown("""
     }
     
     .stBottom > div {
-        background-color: rgba(255, 255, 255, 0.3) !important; /* Quase transparente */
-        backdrop-filter: blur(10px) !important; /* Efeito de desfoque */
-        -webkit-backdrop-filter: blur(10px) !important; /* Para navegadores baseados em WebKit */
-        padding-bottom: 20px; /* Dá um respiro para a caixa não ficar colada no final da tela */
+        background-color: rgba(255, 255, 255, 0.3) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        padding-bottom: 20px;
     }
 
     /* Fundo com Imagem */
     [data-testid="stAppViewContainer"] {
-        background-image: url("https://images.unsplash.com/photo-1615715410008-3883e21f8c7c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Troque o link aqui */
+        background-image: url("https://images.unsplash.com/photo-1615715410008-3883e21f8c7c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+    }
+
+    /* FIX DE CORES: Texto Preto e Input Branco */
+    [data-testid="stChatMessage"] p {
+        color: #000000 !important;
+    }
+
+    [data-testid="stChatInput"] textarea {
+        background-color: white !important;
+        color: black !important;
     }
 
     /* Atualização do Header para combinar com o fundo */
@@ -36,6 +46,10 @@ st.markdown("""
         border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
     }
 
+    .fixed-header h1 {
+        color: black !important;
+    }
+
     .block-container {
         padding-top: 160px; 
     }
@@ -43,7 +57,7 @@ st.markdown("""
 
 <div class="fixed-header">
     <h1 style="margin-bottom: 0;">👁️ Argus</h1>
-    <p style="color: #555; font-size: 14px; margin-top: 0;">Your all-seeing oracle. Ask me anything about Greek mythology, gods, and legends.</p>
+    <p style="color: #000; font-size: 14px; margin-top: 0;">Your all-seeing oracle. Ask me anything about Greek mythology, gods, and legends.</p>
 </div>
 """, unsafe_allow_html=True)
 
